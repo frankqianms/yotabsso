@@ -1,0 +1,9 @@
+[11:32:57] gulp-inject 2 files into yotabssoTab\config.html.
+[11:32:57] gulp-inject 2 files into yotabssoTab\index.html.
+[11:32:57] gulp-inject 2 files into yotabssoTab\remove.html.
+[11:32:57] Finished 'static:inject' after 64 ms
+[11:32:57] Finished 'build' after 43 s
+[11:32:57] Starting 'nodemon'...
+[11:32:57] Finished 'nodemon' after 32 ms
+[11:32:57] Starting 'watch'...
+[11:32:57] PUBLIC_HOSTNAME: 614b-2404-f801-9000-18-e8a0-2636-a0c1-dfb8.ngrok-free.app

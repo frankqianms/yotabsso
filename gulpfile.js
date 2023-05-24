@@ -13,7 +13,7 @@ const config = {};
 // Set environment variables
 const env = argv.env;
 if (env === undefined) {
-    require("dotenv").config();
+    require("dotenv").config({ path: path.resolve(process.cwd(), "env", ".env.local") });
 } else {
     log(`Using custom .env: ${env}`);
     require("dotenv").config({ path: path.resolve(process.cwd(), env) });
