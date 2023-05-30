@@ -31,6 +31,10 @@ provision:
     name: Set TAB_ENDPOINT for local launch
     with:
       run: echo "::set-teamsfx-env TAB_ENDPOINT=https://localhost:53000"
+  - uses: script # Set PUBLIC_HOSTNAME for local launch
+    name: Set PUBLIC_HOSTNAME for local launch
+    with:
+      run: echo "::set-teamsfx-env PUBLIC_HOSTNAME=${{PUBLIC_HOSTNAME}}"
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
     with:
       manifestPath: aad.manifest.json # Relative path to teamsfx folder. Environment variables in manifest will be replaced before apply to AAD app
@@ -38,16 +42,17 @@ provision:
   - uses: teamsApp/validateManifest # This action is currently skipped, will be updated in the future version.
     with:
       manifestPath: ./appPackage/manifest.local.json # Path to manifest template
-  - uses: teamsApp/update # Apply the Teams app manifest to an existing Teams app in Teams Developer Portal. Will use the app id in manifest file to determine which Teams app to update.
-    with:
-      appPackagePath: ./package/yotabsso.zip # Relative path to this file. This is the path for built zip file.
-      # Output: following environment variable will be persisted in current environment's .env file.
-      # TEAMS_APP_ID: the id of Teams app
   - uses: teamsApp/zipAppPackage # Build Teams app package with latest env value
     with:
       manifestPath: ./appPackage/manifest.local.json # Path to manifest template
       outputZipPath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
       outputJsonPath: ./build/appPackage/manifest.${{TEAMSFX_ENV}}.json
+  - uses: teamsApp/update # Apply the Teams app manifest to an existing Teams app in Teams Developer Portal. Will use the app id in manifest file to determine which Teams app to update.
+    with:
+      appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to this file. This is the path for built zip file.
+      # appPackagePath: ./package/yotabsso.zip # Relative path to this file. This is the path for built zip file.
+      # Output: following environment variable will be persisted in current environment's .env file.
+      # TEAMS_APP_ID: the id of Teams app
 
 deploy:
   - uses: devTool/install # Install development tool(s)

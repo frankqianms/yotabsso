@@ -17,9 +17,10 @@
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
-                "gulp build",
-                "gulp manifest",
+                // "gulp build",
+                // "gulp manifest",
                 // "ngrok-serve",
+                "env replace",
                 "Provision",
                 "Deploy",
                 "start-front-end",
@@ -42,6 +43,14 @@
                     53000 // tab service port
                 ]
             }
+        },
+        {
+            "label": "env replace",
+            "type": "process",
+            "command": "python",
+            "args": [
+                "${workspaceFolder}/hostname-config.py",
+            ],
         },
         {
             // Create the debug resources.
@@ -145,6 +154,8 @@
             "args": [
                 "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
                 "ngrok-serve",
+                // ">",
+                // "output.txt"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
