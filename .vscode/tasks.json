@@ -20,7 +20,8 @@
                 // "gulp build",
                 // "gulp manifest",
                 // "ngrok-serve",
-                "env replace",
+                // "env replace",
+                "Start local tunnel",
                 "Provision",
                 "Deploy",
                 "start-front-end",
@@ -51,6 +52,27 @@
             "args": [
                 "${workspaceFolder}/hostname-config.py",
             ],
+        },
+        {
+            "label": "Start local tunnel",
+            "type": "shell",
+            "command": "ngrok http 53000 --log=stdout --log-format=logfmt",
+            "isBackground": true,
+            "problemMatcher": {
+                "pattern": [
+                    {
+                        "regexp": "^.*$",
+                        "file": 0,
+                        "location": 1,
+                        "message": 2
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "starting web service",
+                    "endsPattern": "started tunnel|failed to reconnect session"
+                }
+            }
         },
         {
             // Create the debug resources.

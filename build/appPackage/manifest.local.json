@@ -6,9 +6,9 @@
     "packageName": "yotabsso",
     "developer": {
         "name": "frankqianms",
-        "websiteUrl": "https://1a31-2404-f801-9000-1a-d57c-f21-ce9a-8447.ngrok-free.app",
-        "privacyUrl": "https://1a31-2404-f801-9000-1a-d57c-f21-ce9a-8447.ngrok-free.app/privacy.html",
-        "termsOfUseUrl": "https://1a31-2404-f801-9000-1a-d57c-f21-ce9a-8447.ngrok-free.app/tou.html"
+        "websiteUrl": "https://c019-2404-f801-9000-1a-4492-5bc8-8c0c-d1da.ngrok-free.app",
+        "privacyUrl": "https://c019-2404-f801-9000-1a-4492-5bc8-8c0c-d1da.ngrok-free.app/privacy.html",
+        "termsOfUseUrl": "https://c019-2404-f801-9000-1a-4492-5bc8-8c0c-d1da.ngrok-free.app/tou.html"
     },
     "name": {
         "short": "yotabsso",
@@ -25,7 +25,7 @@
     "accentColor": "#D85028",
     "configurableTabs": [
         {
-            "configurationUrl": "https://1a31-2404-f801-9000-1a-d57c-f21-ce9a-8447.ngrok-free.app/yotabssoTab/config.html?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}",
+            "configurationUrl": "https://c019-2404-f801-9000-1a-4492-5bc8-8c0c-d1da.ngrok-free.app/yotabssoTab/config.html?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team"
@@ -41,11 +41,11 @@
         "messageTeamMembers"
     ],
     "validDomains": [
-        "1a31-2404-f801-9000-1a-d57c-f21-ce9a-8447.ngrok-free.app"
+        "c019-2404-f801-9000-1a-4492-5bc8-8c0c-d1da.ngrok-free.app"
     ],
     "showLoadingIndicator": false,
     "webApplicationInfo": {
         "id": "e63d204a-a85c-40ee-a9c1-134c4dba4052",
-        "resource": "api://1a31-2404-f801-9000-1a-d57c-f21-ce9a-8447.ngrok-free.app/e63d204a-a85c-40ee-a9c1-134c4dba4052"
+        "resource": "api://c019-2404-f801-9000-1a-4492-5bc8-8c0c-d1da.ngrok-free.app/e63d204a-a85c-40ee-a9c1-134c4dba4052"
     }
 }
