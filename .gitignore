@@ -6,6 +6,8 @@ package
 
 # do not include the local environment files
 .env
+env/.env.local
+env/.env.*.user
 
 # do not include the Connectors Json Db file
 connectors.json
