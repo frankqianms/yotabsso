@@ -3,5 +3,5 @@ HTTPS=true
 PORT=53000
 SSL_CRT_FILE=C:/Users/frankqian/.fx/certificate/localhost.crt
 SSL_KEY_FILE=C:/Users/frankqian/.fx/certificate/localhost.key
-REACT_APP_CLIENT_ID=e63d204a-a85c-40ee-a9c1-134c4dba4052
+REACT_APP_CLIENT_ID=48764acc-6205-41ce-ac5f-8137cbe2df8f
 REACT_APP_START_LOGIN_PAGE_URL=https://localhost:53000/auth-start.html
