@@ -17,10 +17,10 @@
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
-                // "gulp build",
+                "gulp build",
                 // "gulp manifest",
-                // "ngrok-serve",
-                "env replace",
+                "ngrok-serve",
+                // "env replace",
                 "Provision",
                 "Deploy",
                 "start-front-end",

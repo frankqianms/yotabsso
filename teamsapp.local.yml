@@ -4,18 +4,36 @@
 version: 1.0.0
 
 provision:
-  # - uses: aadApp/create # Creates a new Azure Active Directory (AAD) app to authenticate users if the environment variable that stores clientId is empty
-  #   with:
-  #     name: yotabsso # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
-  #     generateClientSecret: true # If the value is false, the action will not generate client secret for you
-  #     signInAudience: "AzureADMyOrg" # Authenticate users with a Microsoft work or school account in your organization's Azure AD tenant (for example, single tenant).
-  #   writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
-  #     clientId: AAD_APP_CLIENT_ID
-  #     clientSecret: SECRET_AAD_APP_CLIENT_SECRET # Environment variable that starts with `SECRET_` will be stored to the .env.{envName}.user environment file
-  #     objectId: AAD_APP_OBJECT_ID
-  #     tenantId: AAD_APP_TENANT_ID
-  #     authority: AAD_APP_OAUTH_AUTHORITY
-  #     authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+  - uses: aadApp/create # Creates a new Azure Active Directory (AAD) app to authenticate users if the environment variable that stores clientId is empty
+    with:
+      name: yotabsso # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
+      generateClientSecret: true # If the value is false, the action will not generate client secret for you
+      signInAudience: "AzureADMyOrg" # Authenticate users with a Microsoft work or school account in your organization's Azure AD tenant (for example, single tenant).
+    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+      clientId: AAD_APP_CLIENT_ID
+      clientSecret: SECRET_AAD_APP_CLIENT_SECRET # Environment variable that starts with `SECRET_` will be stored to the .env.{envName}.user environment file
+      objectId: AAD_APP_OBJECT_ID
+      tenantId: AAD_APP_TENANT_ID
+      authority: AAD_APP_OAUTH_AUTHORITY
+      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+  - uses: script
+    with:
+      run: |
+        for ($i = 1; $i -le 3; $i++) {
+          $endpoint = (Invoke-WebRequest -Uri "http://localhost:4040/api/tunnels" | Select-String -Pattern 'https://[a-zA-Z0-9 -\.]*\.ngrok-free\.app').Matches.Value
+          if ($endpoint) {
+            break
+          }
+          sleep 3
+        }
+        if (-not $endpoint) {
+          echo "ERROR: Failed to find tunnel endpoint after 3 attempts."
+          exit 1
+        } else {
+          echo "::set-teamsfx-env TAB_APP_ID=${{AAD_APP_CLIENT_ID}}"
+          echo "::set-teamsfx-env PUBLIC_HOSTNAME=$($endpoint.Substring(8))"
+          echo "::set-teamsfx-env TAB_APP_URI=api://$($endpoint.Substring(8))/${{AAD_APP_CLIENT_ID}}"
+        }
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: yotabsso-${{TEAMSFX_ENV}} # Teams app name
