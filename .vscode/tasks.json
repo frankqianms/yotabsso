@@ -54,7 +54,7 @@
         {
             "label": "Start local tunnel",
             "type": "shell",
-            "command": "ngrok http 53000 --log=stdout --log-format=logfmt",
+            "command": "ngrok http 3007 --log=stdout --log-format=logfmt",
             "isBackground": true,
             "problemMatcher": {
                 "pattern": [

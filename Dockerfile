@@ -28,6 +28,6 @@ COPY --from=BUILD_IMAGE /app/node_modules ./node_modules
 
 ENV DEBUG msteams
 
-EXPOSE 53000
+EXPOSE 3007
 
 CMD [ "node", "dist/server.js" ]
