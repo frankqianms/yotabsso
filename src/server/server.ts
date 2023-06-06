@@ -22,8 +22,8 @@ import * as allComponents from "./TeamsAppsComponents";
 
 // Create the Express webserver
 const express = Express();
-// const port = process.env.port || process.env.PORT || 3007;
-const port = 53000;
+const port = process.env.port || process.env.PORT || 3007;
+// const port = 53000;
 
 function readEnvFile(file, type) {
     if (!fs.existsSync(file)) {
@@ -80,9 +80,9 @@ express.use("/", Express.static(path.join(__dirname, "web/"), {
 
 // Set the port
 express.set("port", port);
-express.set("local_cert", local_cert);
-console.log("local_cert", express.get("local_cert"));
-express.set("local_key", local_key);
+// express.set("local_cert", local_cert);
+// console.log("local_cert", express.get("local_cert"));
+// express.set("local_key", local_key);
 
 // Start the webserver
 http.createServer(express).listen(port, () => {

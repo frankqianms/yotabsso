@@ -38,8 +38,8 @@ provision:
     with:
       run: |
         echo "::set-teamsfx-env TAB_APP_ID=${{AAD_APP_CLIENT_ID}}"
-        echo "::set-teamsfx-env PUBLIC_HOSTNAME=localhost:53000"
-        echo "::set-teamsfx-env TAB_APP_URI=api://localhost:53000/${{AAD_APP_CLIENT_ID}}"
+        echo "::set-teamsfx-env PUBLIC_HOSTNAME=${{TAB_DOMAIN}}"
+        echo "::set-teamsfx-env TAB_APP_URI=api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: yotabsso-${{TEAMSFX_ENV}} # Teams app name

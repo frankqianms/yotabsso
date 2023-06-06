@@ -21,6 +21,7 @@
                 // "gulp manifest",
                 // "ngrok-serve",
                 // "env replace",
+                "Start local tunnel",
                 "gulp serve",
                 "Provision",
                 "Deploy",
@@ -44,6 +45,28 @@
                     53000 // tab service port
                 ]
             }
+        },
+        {
+            "label": "Start local tunnel",
+            "type": "teamsfx",
+            "command": "debug-start-local-tunnel",
+            "args": {
+                "type": "dev-tunnel",
+                "ports": [
+                    {
+                        "portNumber": 3007,
+                        "protocol": "http",
+                        "access": "public",
+                        "writeToEnvironmentFile": {
+                            "endpoint": "TAB_ENDPOINT",
+                            "domain": "TAB_DOMAIN"
+                        }
+                    }
+                ],
+                "env": "local"
+            },
+            "isBackground": true,
+            "problemMatcher": "$teamsfx-local-tunnel-watch"
         },
         {
             "label": "env replace",
